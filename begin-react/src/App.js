@@ -8,30 +8,14 @@ import Wrapper from "./Wrapper";
 import Counter from "./Counter";
 import InputTest from "./InputTest";
 import InputsTest from "./InputsTest";
+import List from "./List";
+import CreateList from "./CreateList";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <Wrapper>
-          <div>
-            <Hello />
-          </div>
-          <div>
-            <ClassStyle />
-          </div>
-        </Wrapper>
-
-        <div>
-          <Props color="white" name="prop params name" />
-          <Props color="yellow" />
-        </div>
-
-        <Counter />
-
-        <InputTest />
-        <InputsTest />
 
         <a
           className="App-link"
@@ -42,6 +26,33 @@ function App() {
           Learn React
         </a>
       </header>
+      <div>
+        <CreateList />
+
+        <List
+          obj_list={[
+            { id: 1, name: "first name", address: "first Address" },
+            { id: 2, name: "second name", address: "second Address" }
+          ]}
+        />
+        <InputsTest />
+        <InputTest />
+        <Counter />
+
+        <div>
+          <Props color="blue" name="prop params name" />
+          <Props color="gray" />
+        </div>
+
+        <Wrapper>
+          <div>
+            <Hello />
+          </div>
+          <div>
+            <ClassStyle />
+          </div>
+        </Wrapper>
+      </div>
     </div>
   );
 }
