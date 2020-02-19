@@ -10,6 +10,10 @@ import InputTest from "./InputTest";
 import InputsTest from "./InputsTest";
 import List from "./List";
 import CreateList from "./CreateList";
+import ContextSample from "./ContextAPI";
+import CounterReducer from "./CounterReducer";
+import CreateListReducer from "./CreateListReducer";
+import CustomHookList from "./CustomHookList";
 
 function App() {
   return (
@@ -27,8 +31,11 @@ function App() {
         </a>
       </header>
       <div>
+        <ContextSample />
+        <CustomHookList />
+        <CreateListReducer />
+        <CounterReducer />
         <CreateList />
-
         <List
           obj_list={[
             { id: 1, name: "first name", address: "first Address" },
@@ -38,12 +45,10 @@ function App() {
         <InputsTest />
         <InputTest />
         <Counter />
-
         <div>
           <Props color="blue" name="prop params name" />
           <Props color="gray" />
         </div>
-
         <Wrapper>
           <div>
             <Hello />

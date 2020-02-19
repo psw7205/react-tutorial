@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useMemo, useCallback } from "react";
 import List from "./List";
 
 function Inputs({ name, address, onChange, onCreate }) {
@@ -19,6 +19,11 @@ function Inputs({ name, address, onChange, onCreate }) {
   );
 }
 
+function counteActiveObjs(objs) {
+  console.log("counting...");
+  return objs.filter(obj => obj.flag).length;
+}
+
 function CreateList() {
   const nextId = useRef(5);
   const [inputs, setInputs] = useState({
@@ -26,35 +31,6 @@ function CreateList() {
     address: "",
     flag: false
   });
-
-  const { name, address } = inputs;
-
-  const onChange = e => {
-    const { name, value } = e.target;
-    setInputs({ ...inputs, [name]: value });
-  };
-
-  const onCreate = () => {
-    setInputs({
-      name: "",
-      address: ""
-    });
-
-    // objs.push({...}) -> 안됨
-    // setObjs([...objs, { id: nextId.current, name, address }]);
-    setObjs(objs.concat({ id: nextId.current, name, address }));
-    nextId.current += 1;
-  };
-
-  const onRemove = id => {
-    setObjs(objs.filter(obj => obj.id !== id));
-  };
-
-  const onToggle = id => {
-    setObjs(
-      objs.map(obj => (obj.id === id ? { ...obj, flag: !obj.flag } : obj))
-    );
-  };
 
   const [objs, setObjs] = useState([
     {
@@ -83,8 +59,51 @@ function CreateList() {
     }
   ]);
 
+  const { name, address } = inputs;
+
+  const onChange = useCallback(
+    e => {
+      const { name, value } = e.target;
+      setInputs({ ...inputs, [name]: value });
+    },
+    [inputs]
+  );
+
+  const onCreate = useCallback(() => {
+    setInputs({
+      name: "",
+      address: ""
+    });
+
+    // objs.push({...}) -> 안됨
+    // setObjs([...objs, { id: nextId.current, name, address }]);
+    setObjs(objs => objs.concat({ id: nextId.current, name, address }));
+    nextId.current += 1;
+  }, [name, address]);
+
+  const onRemove = useCallback(id => {
+    setObjs(objs => objs.filter(obj => obj.id !== id));
+  }, []);
+
+  const onToggle = useCallback(
+    id => {
+      setObjs(objs =>
+        objs.map(obj => (obj.id === id ? { ...obj, flag: !obj.flag } : obj))
+      );
+    },
+    []
+  );
+
+  const count = useMemo(() => {
+    // useMemo가 없으면 CreateList가 바뀔 때마다 (ex: input만 바뀌어도) 계속 호출됨
+    // useMemo를 사용해 objs가 바뀔 때만 호출되게 최적화
+
+    counteActiveObjs(objs);
+  }, [objs]);
+
   return (
     <>
+      <div>{count}</div>
       <Inputs
         name={name}
         address={address}
@@ -96,4 +115,4 @@ function CreateList() {
   );
 }
 
-export default CreateList;
+export default React.memo(CreateList);
