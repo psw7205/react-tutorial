@@ -3,6 +3,7 @@ import produce from "immer";
 import UserList from "./UserList";
 import CreateUser from "./CreateUser";
 import Hello from "./ClassHello";
+import ClassCounter from "./ClassCounter";
 
 function countActiveUsers(users) {
   console.log("활성 사용자 수를 세는중...");
@@ -80,6 +81,7 @@ function App() {
   const count = useMemo(() => countActiveUsers(users), [users]);
   return (
     <>
+      <ClassCounter />
       <Hello />
       <Hello name="Class Component" flag />
       <UserDispatch.Provider value={dispatch}>
