@@ -8,6 +8,14 @@ react
 
 ---
 
+CSS Module
+
+레거시 프로젝트에 리액트 도입 시
+
+CSS 클래스 네이밍 규칙 자동 생성
+
+---
+
 react-router - 컴포넌트 기반으로 라우팅
 
 next.js ssr, 파일 경로기반 라우팅
