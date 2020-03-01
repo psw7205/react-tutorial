@@ -1,5 +1,19 @@
 react
 
+[book](https://react.vlpt.us)
+
+[react life-cycle](https://react.vlpt.us/basic/25-lifecycle.html)
+
+[reacte router](https://reacttraining.com/react-router/web/guides/philosophy)
+
+---
+
+react-router - 컴포넌트 기반으로 라우팅
+
+next.js ssr, 파일 경로기반 라우팅
+
+---
+
 prettier
 
 - .prettierrc 파일을 통해 설정
@@ -17,12 +31,6 @@ eslint
   ```
 
 - prettier에서 사용 가능한 설정은 비활성화
-
-
-
-[book](https://react.vlpt.us)
-
-[react life-cycle](https://react.vlpt.us/basic/25-lifecycle.html)
 
 
 ## 마운트
