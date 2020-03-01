@@ -1,5 +1,25 @@
 react
 
+prettier
+
+- .prettierrc 파일을 통해 설정
+
+eslint
+
+- package.json - eslintconfig - extends: react-app
+
+- create-react-app으로 생성시 기본 설정들은 위에 불러와짐
+
+- airbnb, google 등 회사들 규칙들 추가 가능
+
+- ```bash
+  yarn add eslint-config-prettier
+  ```
+
+- prettier에서 사용 가능한 설정은 비활성화
+
+
+
 [book](https://react.vlpt.us)
 
 [react life-cycle](https://react.vlpt.us/basic/25-lifecycle.html)
