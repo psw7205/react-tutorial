@@ -4,7 +4,9 @@ react
 
 [react life-cycle](https://react.vlpt.us/basic/25-lifecycle.html)
 
-[reacte router](https://reacttraining.com/react-router/web/guides/philosophy)
+[react router](https://reacttraining.com/react-router/web/guides/philosophy)
+
+[react icons](https://react-icons.netlify.com)
 
 ---
 
