@@ -8,6 +8,8 @@ react
 
 [react icons](https://react-icons.netlify.com)
 
+[polished](https://polished.js.org/docs/)
+
 ---
 
 CSS Module
@@ -41,6 +43,10 @@ eslint
   ```
 
 - prettier에서 사용 가능한 설정은 비활성화
+
+---
+
+# Life Cycle
 
 
 ## 마운트
