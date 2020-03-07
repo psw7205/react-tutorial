@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Item from "./Item";
+import { useTodoState } from "../Context";
 
 const ListStyle = styled.div`
   flex: 1;
@@ -10,12 +11,13 @@ const ListStyle = styled.div`
 `;
 
 function List() {
+  const todos = useTodoState();
+
   return (
     <ListStyle>
-      <Item text="Sample Text 1" done={true} />
-      <Item text="Sample Text 2" done={true} />
-      <Item text="Sample Text 3" done={false} />
-      <Item text="Sample Text 4" done={false} />
+      {todos.map(todo => (
+        <Item key={todo.id} id={todo.id} text={todo.text} done={todo.done} />
+      ))}
     </ListStyle>
   );
 }

@@ -4,6 +4,7 @@ import Layout from "./components/Layout";
 import Head from "./components/Head";
 import List from "./components/List";
 import CreateForm from "./components/CreateForm";
+import { TodoProvider } from "./Context";
 
 const GlobalStyle = createGlobalStyle`
 body{
@@ -16,18 +17,22 @@ function App() {
       theme={{
         palette: {
           blue: "#00adb5",
+          lightgray: "#eeeeee",
+          darkgray: "#393e46",
           gray: "#c9d6df",
           black: "#222831",
           red: "#d63447"
         }
       }}
     >
-      <GlobalStyle />
-      <Layout>
-        <Head />
-        <List />
-        <CreateForm />
-      </Layout>
+      <TodoProvider>
+        <GlobalStyle />
+        <Layout>
+          <Head />
+          <List />
+          <CreateForm />
+        </Layout>
+      </TodoProvider>
     </ThemeProvider>
   );
 }

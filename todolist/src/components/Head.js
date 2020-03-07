@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { darken, lighten } from "polished";
+import { useTodoState } from "../Context";
 
 const HeadStyle = styled.div`
   padding: 3rem 2rem 2rem 1.5rem;
@@ -34,11 +35,14 @@ function Head() {
   const day = date.pop();
   const today = date.join(" ");
 
+  const todos = useTodoState();
+  const undoneTasks = todos.filter(todo => !todo.done);
+
   return (
     <HeadStyle>
       <h1>{today}</h1>
       <div className="day">{day}</div>
-      <div className="todo-tasks">할 일 2개 남음</div>
+      <div className="todo-tasks">할 일 {undoneTasks.length}개 남음</div>
     </HeadStyle>
   );
 }
