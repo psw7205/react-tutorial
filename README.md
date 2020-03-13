@@ -1,4 +1,35 @@
-react
+# react
+
+## redux
+
+[redux-example](https://github.com/reduxjs/redux/tree/master/examples)
+
+action - 상태에 변화가 필요할 때 dispatch에 param으로 전달
+
+type은 필수, 타입을 가지고 리듀서에 작성된 swtch-case 문을 통해 새로운 상태를 만들어 반환
+
+```javascript
+{
+	type: "ADD_ITEM",
+	text: 'add item',
+	data: {
+		id: 0,
+		title: 'action 객체'
+	}	
+}
+```
+
+store - 한 애플리케이션에는 하나의 스토어
+
+subscribe - subscribe에 함수를 전달하면 action이 dispatch 될 때마다 실행
+
+상태는 항상 읽기 전용 spread 연산자 사용해서 불변성 지키기
+
+리듀서는 순수함수 - ajax, random, new Date등은 리듀서 밖에서 처리
+
+
+
+---
 
 [book](https://react.vlpt.us)
 
