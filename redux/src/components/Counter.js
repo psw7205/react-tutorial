@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch, shallowEqual } from "react-redux";
 import { increase, decrease, setDiff } from "../modules/counter";
+import { increaseAsync, decreaseAsync } from "../modules/counter";
 
 function Counter({ number, diff, onIncrease, onDecrease, onSetDiff }) {
   const onChange = e => {
@@ -42,8 +43,14 @@ function CounterContainer() {
 
   // useDispatch: 리덕스 스토어의 dispatch 사용 할 수 있게 해주는 Hook
   const dispatch = useDispatch();
-  const onIncrease = () => dispatch(increase());
-  const onDecrease = () => dispatch(decrease());
+  const onIncrease = () => {
+    dispatch(increase());
+    dispatch(increaseAsync());
+  };
+  const onDecrease = () => {
+    dispatch(decrease());
+    dispatch(decreaseAsync());
+  };
   const onSetDiff = diff => dispatch(setDiff(diff));
 
   return (
