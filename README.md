@@ -1,5 +1,19 @@
 # react
 
+[book](https://react.vlpt.us)
+
+[react life-cycle](https://react.vlpt.us/basic/25-lifecycle.html)
+
+[react router](https://reacttraining.com/react-router/web/guides/philosophy)
+
+[react icons](https://react-icons.netlify.com)
+
+[polished](https://polished.js.org/docs/)
+
+[json-server](https://github.com/typicode/json-server) // npx json-server ./data.json --port 4000 // .data.json 파일 기반으로 localhost:4000에 api 서버를 열어줌
+
+---
+
 ## redux
 
 [redux-example](https://github.com/reduxjs/redux/tree/master/examples)
@@ -26,20 +40,6 @@ subscribe - subscribe에 함수를 전달하면 action이 dispatch 될 때마다
 상태는 항상 읽기 전용 spread 연산자 사용해서 불변성 지키기
 
 리듀서는 순수함수 - ajax, random, new Date등은 리듀서 밖에서 처리
-
-
-
----
-
-[book](https://react.vlpt.us)
-
-[react life-cycle](https://react.vlpt.us/basic/25-lifecycle.html)
-
-[react router](https://reacttraining.com/react-router/web/guides/philosophy)
-
-[react icons](https://react-icons.netlify.com)
-
-[polished](https://polished.js.org/docs/)
 
 ---
 
