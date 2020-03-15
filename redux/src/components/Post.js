@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getPost } from "../modules/posts";
+import { getPost, clearPost } from "../modules/posts";
 
 function PostPage({ match }) {
   const { id } = match.params;
@@ -14,6 +14,11 @@ function PostContainer({ postId }) {
 
   useEffect(() => {
     dispatch(getPost(postId));
+
+    // 언마운트 될 때 기존 포스트 내용 비우기
+    return () => {
+      dispatch(clearPost());
+    };
   }, [postId, dispatch]);
 
   if (loading) return <div>로딩중...</div>;

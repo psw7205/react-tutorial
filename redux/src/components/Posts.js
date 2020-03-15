@@ -12,7 +12,19 @@ function PostListContainer() {
     dispatch(getPosts());
   }, [dispatch]);
 
-  if (loading) return <div>로딩중...</div>;
+  // 재로딩 이슈 수정
+  // data가 있으면 getPosts를 안하고 기존데이터를 보여주는 방법
+  // 서버에서 데이터가 갱신되더라고 기존 데이터가 보여짐
+  // useEffect(() => {
+  //   if (data) return;
+  //   dispatch(getPosts());
+  // }, [data, dispatch]);
+
+  // handleAsyncActions에 keepData parameter를 주고
+  // 기존 데이터가 있으면 로딩중... 글자 대신 기존 데이터 보여줌
+  // 로딩이 끝나면 새로 가져온 데이터 보여주기
+
+  if (loading && !data) return <div>로딩중...</div>;
   if (error) return <div>에러 발생!</div>;
   if (!data) return null;
   return <PostList posts={data} />;
