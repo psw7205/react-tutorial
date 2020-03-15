@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getPost, clearPost } from "../modules/posts";
+import { getPost, goToHome } from "../modules/posts";
+import { reducerUtils } from "../lib/asyncUtils";
 
 function PostPage({ match }) {
   const { id } = match.params;
@@ -9,23 +10,26 @@ function PostPage({ match }) {
 }
 
 function PostContainer({ postId }) {
-  const { data, loading, error } = useSelector(state => state.posts.post);
+  const { data, loading, error } = useSelector(
+    state => state.posts.post[postId] || reducerUtils.initial()
+  );
+
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getPost(postId));
-
-    // 언마운트 될 때 기존 포스트 내용 비우기
-    return () => {
-      dispatch(clearPost());
-    };
   }, [postId, dispatch]);
 
-  if (loading) return <div>로딩중...</div>;
+  if (loading && !data) return <div>로딩중...</div>;
   if (error) return <div>에러 발생!</div>;
   if (!data) return null;
 
-  return <Post post={data} />;
+  return (
+    <>
+      <button onClick={() => dispatch(goToHome())}>홈으로 이동</button>
+      <Post post={data} />;
+    </>
+  );
 }
 
 function Post({ post }) {

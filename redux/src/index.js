@@ -11,9 +11,16 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import myLogger from "./middlewares/myLogger";
 import logger from "redux-logger";
 import ReduxThunk from "redux-thunk";
-import { BrowserRouter } from "react-router-dom";
+import { Router } from "react-router-dom";
+import { createBrowserHistory } from "history";
 
-const middlewares = [ReduxThunk, myLogger, logger];
+const customHistory = createBrowserHistory();
+
+const middlewares = [
+  ReduxThunk.withExtraArgument({ history: customHistory }),
+  myLogger,
+  logger
+];
 
 const store = createStore(
   rootReducer,
@@ -22,11 +29,11 @@ const store = createStore(
 console.log(store.getState());
 
 ReactDOM.render(
-  <BrowserRouter>
+  <Router history={customHistory}>
     <Provider store={store}>
       <App />
     </Provider>
-  </BrowserRouter>,
+  </Router>,
   document.getElementById("root")
 );
 
