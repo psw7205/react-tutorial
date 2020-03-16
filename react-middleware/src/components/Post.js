@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getPost, goToHome } from "../modules/posts";
+import { getPost, goToHome, printState } from "../modules/posts";
 import { reducerUtils } from "../lib/asyncUtils";
 
 function PostPage({ match }) {
@@ -27,7 +27,8 @@ function PostContainer({ postId }) {
   return (
     <>
       <button onClick={() => dispatch(goToHome())}>홈으로 이동</button>
-      <Post post={data} />;
+      <button onClick={() => dispatch(printState())}>현재 상태 조회</button>
+      <Post post={data} />
     </>
   );
 }

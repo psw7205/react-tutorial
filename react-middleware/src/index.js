@@ -16,7 +16,11 @@ import { createBrowserHistory } from "history";
 import createSagaMiddleware from "redux-saga";
 
 const customHistory = createBrowserHistory();
-const sagaMiddleware = createSagaMiddleware();
+const sagaMiddleware = createSagaMiddleware({
+  context: {
+    history: customHistory
+  }
+});
 
 const middlewares = [
   sagaMiddleware,
