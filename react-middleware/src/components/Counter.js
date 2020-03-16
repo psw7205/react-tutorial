@@ -44,11 +44,11 @@ function CounterContainer() {
   // useDispatch: 리덕스 스토어의 dispatch 사용 할 수 있게 해주는 Hook
   const dispatch = useDispatch();
   const onIncrease = () => {
-    dispatch(increase());
+    // dispatch(increase());
     dispatch(increaseAsync());
   };
   const onDecrease = () => {
-    dispatch(decrease());
+    // dispatch(decrease());
     dispatch(decreaseAsync());
   };
   const onSetDiff = diff => dispatch(setDiff(diff));
